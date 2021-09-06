@@ -1,27 +1,35 @@
-#include <iostream>
+/*그룹 단어 체커 */
 
+#include <iostream>
 using namespace std;
+
+bool arr[26] = { 0, }; // alphabet array
+int cnt = 0;
+
+void wordChecker(string str) {
+	fill_n(arr, 26, 0); // arr initialize 
+
+	for (int i = 0; i < str.length(); i++) {
+		if (i == 0) {
+			arr[(int)str[i] - 'a'] = true; // arr의 index에 반영
+			continue;
+		} 
+		if (arr[(int)str[i] - 'a'] == true && str[i] != str[i - 1]) return;
+
+		arr[(int)str[i] - 'a'] = true;  
+	}
+	cnt++;
+}
+
 int main() {
-	int N;
+	int N; // 총 단어의 수 
 	string str;
 
 	cin >> N;
-	int cnt = 0;
-
 	for (int i = 0; i < N; i++) {
 		cin >> str;
-		int arr[26] = { 0, };
-		int flag = 0;
-		for (int j = 0; j < str.length(); j++) {
-			arr[(int)str[j] - 'a']++; // 'a' 로 사용가능
-
-			if (arr[(int)str[j] - 'a'] > 1 && str[j] != str[j - 1]) {
-				flag = 1;
-				break;
-			}
-		}
-		if (flag == 0) cnt++;
+		wordChecker(str);
 	}
-	cout << cnt;
 
+	cout << cnt << "\n";
 }
