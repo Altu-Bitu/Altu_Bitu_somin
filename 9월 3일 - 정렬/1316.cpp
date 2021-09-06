@@ -13,9 +13,9 @@ int main() {
 		int arr[26] = { 0, };
 		int flag = 0;
 		for (int j = 0; j < str.length(); j++) {
-			arr[(int)str[j] - 97]++; // 'a' in ASCII code -> 97
+			arr[(int)str[j] - 'a']++; // 'a' 로 사용가능
 
-			if (arr[(int)str[j] - 97] > 1 && str[j] != str[j - 1]) {
+			if (arr[(int)str[j] - 'a'] > 1 && str[j] != str[j - 1]) {
 				flag = 1;
 				break;
 			}
