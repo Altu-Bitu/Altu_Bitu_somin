@@ -1,9 +1,11 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
-#include <set>
 #include <algorithm>
+#include <set>
 
 using namespace std;
+
+/* set을 사용할려고 했는데 시간 초과가 계속 나옴 ㅠㅠ */
 
 int main() {
 	int N, num;
