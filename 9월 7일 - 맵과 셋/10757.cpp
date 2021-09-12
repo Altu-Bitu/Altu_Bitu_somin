@@ -3,6 +3,8 @@
 
 using namespace std;
 
+/* 어디가 틀린지 모르겠어요 ㅠㅠ */
+
 int main() {
 	string A, B;
 	cin >> A >> B;
