@@ -28,7 +28,7 @@ int main() {
 		total_output = daily2 + e_output;
 		w2 += e_input - total_output;
 		if (abs(e_input - total_output) > T)
-			daily2 += floor((e_input - total_output) / 2);
+			daily2 += floor((e_input - total_output) / 2.0);
 	}
 	
 	if (w2 <= 0 || daily2 <= 0) cout << "Danger Diet\n";
