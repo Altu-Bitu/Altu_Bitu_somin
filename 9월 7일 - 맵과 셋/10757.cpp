@@ -29,8 +29,16 @@ int main() {
 
 	while (size < max(a_arr.size(),b_arr.size())){
 		result[size] += (a_arr[size] + b_arr[size]) % 10;
-		if ((a_arr[size] + b_arr[size]) / 10 > 0)
-			result[size+1]++;
+		/* 반례 바로잡는 코드라 지저분*/
+		/* 만약에 반례가 뭔지 몰랐더라면 끝까지 틀렸을 듯*/
+		if (result[size] == 10) {
+			result[size] = 0;
+			result[size + 1] += 1;
+		}
+		if ((a_arr[size] + b_arr[size]) / 10 > 0) 
+			result[size + 1]++;
+		
+			
 		size++;
 	}
 	if (result[size] == 0) size--; 
