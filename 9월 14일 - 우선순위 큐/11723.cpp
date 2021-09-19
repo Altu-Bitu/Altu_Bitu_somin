@@ -8,7 +8,7 @@ int main() {
 
 	int n , num;
 	string s; 
-	bool arr[21] = { false }; // 1 <= x <= 20
+	bool arr[21] = { false }; 
 	cin >> n;
 
 	while (n--) {
