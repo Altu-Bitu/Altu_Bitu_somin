@@ -4,8 +4,8 @@
 using namespace std;
 
 struct info{ // 내구도와 로봇 존재 여부 
-	int power; // 내구도 
-	bool is_on; // 로봇 존재 유무  
+	int power; // 내구도  
+	bool is_on; // 로봇 존재 유무   
 };
 
 vector<info> belt; // 컨베이너 벨트 정보(내구도, 로봇여부)
@@ -66,12 +66,12 @@ int main() {
 
 	int n, k; // n: 칸 수 k: 내구도가 0인 칸의 마지노선 개수 
 
-	//입력
+	// 입력
 	cin >> n >> k; // 입력 
 	belt.assign(n * 2, { 0,false }); // 컨베이어 벨트 정보 초기화 
 	for (int i = 0; i < n * 2; i++) cin >> belt[i].power; // 벨트 내구도 정보 담기 
 
-	//연산
+	// 연산
 	int start = 0;    //올리는 위치
 	int end = n - 1;  //내리는 위치
 	int step = 0;     //단계 수
