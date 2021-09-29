@@ -62,7 +62,7 @@ void third(int start) {
 
 int main() {
 	ios_base::sync_with_stdio(false); // 입출력 속도 향상 
-	cin.tie(NULL); // 입출력 속도 향상
+	cin.tie(NULL); // 입출력 속도 향상 
 
 	int n, k; // n: 칸 수 k: 내구도가 0인 칸의 마지노선 개수 
 
