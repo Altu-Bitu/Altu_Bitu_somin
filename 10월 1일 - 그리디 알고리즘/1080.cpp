@@ -4,6 +4,15 @@
 
 using namespace std;
 
+void flip(vector<vector<char>>& a, vector<vector<char>>& b,int col, int row ) {
+	for (int i = col; i < col + 3; i++) {
+		for (int j = row; j < row + 3; j++) {
+			if (a[i][j] == '0') a[i][j] = '1';
+			else a[i][j] = '0';
+		}
+	}
+}
+
 int cal_min(vector<vector<char>>& a, vector<vector<char>>& b) {
 	int ans = 0;
 	int col = a.size();
@@ -13,12 +22,7 @@ int cal_min(vector<vector<char>>& a, vector<vector<char>>& b) {
 		for (int j = 0; j <= row - 3; j++) {
 			if (a[i][j] != b[i][j]) {
 				ans++;
-				for (int k = i; k < i + 3; k++) {
-					for (int l = j; l < j + 3; l++) {
-						if (a[k][l] == '0') a[k][l] = '1';
-						else a[k][l] ='0';
-					}
-				}
+				flip(a, b, i, j);
 			}
 		}
 	}
