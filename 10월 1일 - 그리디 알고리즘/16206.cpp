@@ -7,10 +7,9 @@
 
 using namespace std;
 
-vector<int> cake;
-int ans = 0;
+int ans = 0, cnt = 0;
 
-int roll_cake(int m, int cnt) {
+int roll_cake(int m, vector<int>& cake) {
 	for (int i = 0; i < cake.size(); i++) {
 		while (cake[i] >= 10) {
 			if (cake[i] == 10) { // 길이가 10이라면
@@ -27,47 +26,41 @@ int roll_cake(int m, int cnt) {
 	return ans;
 }
 
-int pre_roll(int num, int m, int cnt) {
-	while (num >= 10) {
-		if (num == 10) {
-			ans++;
-			break;
-		}
-		if (cnt == m) return cnt;
-
-		cnt++;
-		num -= 10;
-		ans++;
-	}
-	return cnt;
-}
+/* 
+* 10의 배수가 들어올 때 -> 10의 배수끼리도 정렬 해줘야 함! ( 10 , 20, 30, 40 예시) 
+*/
 
 int main() {
-	int n, m; 
-	int cnt = 0; // 자른 횟수 count 
+	int n, m, temp; 
+	
 
 	//입력
 	cin >> n >> m;
-	cake.assign(n, 0);
+	vector<int> cake_1;
+	vector<int> cake_0;
 
 	while (n--) {
-		int temp; 
 		cin >> temp;
-		if(temp % 10 != 0) cake.push_back(temp); //10의 배수 아니면 push
-		else {
-			if (temp == 10) ans++;
-			else { //10이 아닌 10의 배수 일 경우
-				cnt = pre_roll(temp, m, cnt);
-				if (cnt == m) {
-					cout << ans;
-					return 0;
-				}
+		if(temp % 10 != 0) cake_1.push_back(temp); //10의 배수 아닌 length
+		else { //10의 배수
+			if (temp == 10) {
+				ans++;
+				continue;
 			}
+			cake_0.push_back(temp); //10의 배수 모아 놓기 	
 		}
 	}
-	//연산 & 출력
-	sort(cake.begin(), cake.end()); 
-	cout << roll_cake(m, cnt);
 
+	//연산 & 출력
+	sort(cake_0.begin(), cake_0.end());
+	sort(cake_1.begin(), cake_1.end()); 
+	
+	roll_cake(m, cake_0);
+	if (cnt == m) {
+		cout << ans;
+		return 0;
+	}
+
+	cout << roll_cake(m, cake_1);
 	return 0;
 }
