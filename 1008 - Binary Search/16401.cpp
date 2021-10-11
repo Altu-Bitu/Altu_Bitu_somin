@@ -16,13 +16,13 @@ bool find_true(int mid) {
     //mid = 자르는 길이
     cnt = 0;
     //연산
-    if (n >= m) {
+    if (n >= m) { //사람수가 과자의 수보다 적을 때 -> 정렬한 후 n-m부터 검사하면 됨
         for (int i = n - m; i < n; i++) cnt += arr[i] / mid;
     }
-    else {
+    else { //사람수가 과자의 수보다 많을 때 -> 전체 확인
         for (int i = 0; i < n; i++) cnt += arr[i] / mid;
     }
-    //결과 나타내기
+    //결과 표현
     if (cnt >= m) return true;
     return false;
 
@@ -31,9 +31,10 @@ bool find_true(int mid) {
 int find_mid(int left, int right) {
     while (left <= right) {
         int mid = (left + right) / 2;
-        if (mid == 0) break;
+        if (mid == 0) break;  // mid가 0이 될 수 있음 기억해야 함!
+
         if (find_true(mid)) {
-            ans = mid;
+            ans = mid; //answer 업데이트 해주기
             left = mid + 1;
         }
         else {
@@ -50,7 +51,8 @@ int main() {
     for (int i = 0; i < n; i++)
         cin >> arr[i];
 
-    sort(arr.begin(), arr.end()); //길이 정렬
+    //길이 정렬 (오름차순)
+    sort(arr.begin(), arr.end());
 
     //출력 && 연산
     cout << find_mid(0, arr.back());
