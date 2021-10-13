@@ -1,16 +1,5 @@
 //
 // Created by somin on 10/11/2021.
-// 19637) IF문 좀 대신 써줘
-//
-#include <iostream>
-#include <string>
-#include <map>
-#include <algorithm>
-
-using namespace std;
-
-//
-// Created by somin on 10/11/2021.
 // 과자 나눠주기
 //
 
