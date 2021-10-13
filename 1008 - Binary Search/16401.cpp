@@ -1,5 +1,16 @@
 //
 // Created by somin on 10/11/2021.
+// 19637) IF문 좀 대신 써줘
+//
+#include <iostream>
+#include <string>
+#include <map>
+#include <algorithm>
+
+using namespace std;
+
+//
+// Created by somin on 10/11/2021.
 // 과자 나눠주기
 //
 
@@ -16,16 +27,10 @@ bool find_true(int mid) {
     //mid = 자르는 길이
     cnt = 0;
     //연산
-    if (n >= m) { //사람수가 과자의 수보다 적을 때 -> 정렬한 후 n-m부터 검사하면 됨
-        for (int i = n - m; i < n; i++) cnt += arr[i] / mid;
-    }
-    else { //사람수가 과자의 수보다 많을 때 -> 전체 확인
-        for (int i = 0; i < n; i++) cnt += arr[i] / mid;
-    }
+    for (int i = 0; i < n; i++) cnt += arr[i] / mid;
     //결과 표현
     if (cnt >= m) return true;
     return false;
-
 }
 
 int find_mid(int left, int right) {
