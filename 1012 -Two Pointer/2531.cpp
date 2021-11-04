@@ -9,32 +9,40 @@
 
 using namespace std;
 
-int calcMax(vector<int>& arr, int k, int c) {
-    int cnt, s = 0, e = k - 1, max = 0; //s-> start, e -> end
-    bool flag;
-    set<int> set1;
-    while (true) {
-        cnt = 0; // cnt 초기화
-        flag = false; //flag 초기화
+ int calcMax(vector<int> arr, int d, int k, int c){
+     int cnt, s = 0, e = k - 1, max = 0; //s-> start, e -> end
+     vector<int> sushi_arr;
+     sushi_arr.assign(d,0);
 
-        //한 구간 안 연산
-        for (int i = 0; i < k; i++) {
-            if (arr[(s + i) % arr.size()] != c) set1.insert(arr[(s + i) % arr.size()]);
-        }
-        cnt = set1.size() + 1;
-        if (cnt > max) max = cnt; //max update
+     while(true){
+         cnt = 0; //cnt 초기화
 
-        //다음으로 넘어가기
-        s = (s + 1) % arr.size();
-        e = (e + 1) % arr.size();
-        set1.clear(); //set 비우기
+         //sushi arr 초기화
+         for(int i = 0; i<arr.size();i++){
+             sushi_arr[arr[i]]++;
+             if(sushi_arr[arr[i]] > 1) sushi_arr[arr[i]] = 1;
+         }
 
-        if (s == 0 && e == k-1) break; //탈출조건
-    }
-    return max;
-}
+         for(int i = 0; i<k; i++){
+             if(arr[s+i] != c && sushi_arr[arr[s+i]] == 1) {
+                 cnt++;
+                 sushi_arr[arr[s + i]]--;
+             }
+         }
+
+         cnt++;
+         if (cnt > max) max = cnt; //max update
+
+         s = (s + 1) % arr.size();
+         e = (e + 1) % arr.size();
+
+         if (s == 0 && e == k-1) break; //탈출조건
+     }
+     return max;
+ }
+
 /*
- * set 쓰면) 시간 초과
+ *  시간초과
  */
 
 int main() {
@@ -54,7 +62,7 @@ int main() {
     }
 
     //연산 && 출력
-    cout << calcMax(arr, k, c) << '\n';
+    cout << calcMax(arr, d, k, c) << '\n';
 
     return 0;
 }
