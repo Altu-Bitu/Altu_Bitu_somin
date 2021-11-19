@@ -62,6 +62,7 @@ int bfs(int n, vector<int>& path){
 int main(){
     int n, ans;
     vector<int> path(SIZE+1,-1);
+
     //입력
     cin >> n;
 

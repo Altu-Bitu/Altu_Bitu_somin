@@ -18,6 +18,7 @@ int checkWinner(vector<vector<int>>& board, int i, int j, int k){
     int row = i, col = j;
 
     //6개 연속인지 체크 (앞에서)
+
     if(row-arr_r[k]>= 0 && row-arr_r[k] <SIZE && row-arr_c[k]>= 0 && row-arr_c[k] <SIZE ){
         if(board[row-arr_r[k]][col-arr_c[k]] == curr_val) return 0;
     }

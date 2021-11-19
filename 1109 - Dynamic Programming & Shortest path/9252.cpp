@@ -48,6 +48,7 @@ int LCS(string s1, string s2){
 int main(){
     int ans = 0;
     string s1, s2;
+  
     //입력
     cin >> s1 >> s2;
     //연산
