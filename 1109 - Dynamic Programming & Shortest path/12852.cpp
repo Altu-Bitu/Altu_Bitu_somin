@@ -62,14 +62,15 @@ int bfs(int n, vector<int>& path){
 int main(){
     int n, ans;
     vector<int> path(SIZE+1,-1);
-    // 입력
+
+    //입력
     cin >> n;
 
-    // 연산
+    //연산
     ans = bfs(n,path);
     vector<int> result = back(n,path);
 
-    // 출력
+    //출력
     cout << ans << '\n';
     for(int i = result.size()-1; i>=0; i--){
         cout << result[i] <<' ';
