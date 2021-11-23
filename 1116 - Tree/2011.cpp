@@ -44,7 +44,7 @@ int main(){
     for(int i = 1; i <= n.size() ;i++){
         num_arr[i] = n[i-1] -'0';
         if(num_arr[i] == 0){
-            if(num_arr[i-1] == 1) continue;
+            if(num_arr[i-1] == 1 || num_arr[i-1] == 2) continue;
             else{
                 cout << 0 << '\n';
                 return 0;
